@@ -1,18 +1,22 @@
-﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿
 
 namespace lands
 {
+    using lands.Views;
+    using Xamarin.Forms;
+
     public partial class App : Application
     {
+        #region Constructor 
         public App()
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            this.MainPage = new LoginPage();
         }
+        #endregion
 
+        #region metodos
         protected override void OnStart()
         {
         }
@@ -24,5 +28,6 @@ namespace lands
         protected override void OnResume()
         {
         }
+        #endregion
     }
 }
