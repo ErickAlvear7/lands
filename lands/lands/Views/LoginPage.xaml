@@ -1,64 +1,121 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="lands.Views.LoginPage">
+             x:Class="lands.Views.LoginPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="Lands">
     <ContentPage.Content>
-        <StackLayout Padding="20">
-            <Label
-                Text="Login"
-                FontSize="Large"
-                FontAttributes="Bold"
-                HorizontalOptions="Center">
-            </Label>
-            <Image
+        <ScrollView
+            BindingContext="{Binding Login}">
+            <StackLayout Padding="5">
+              
+                <Image
                 Source="logo"
                 WidthRequest="150">
-            </Image>
-            <Grid
-                Margin="10">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="2*"/>
-                </Grid.ColumnDefinitions>
-                <Label
-                    Grid.Column="0"
-                    Grid.Row="0"
+                </Image>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label
+                 Grid.Column="0"
+                 Grid.Row="0"
                 Text="Email"
-                FontAttributes="Bold">
-                </Label>
-                <Entry
-                    Grid.Column="1"
-                    Grid.Row="0"
+                FontAttributes="Bold"
+                VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                Grid.Column="1"
+                Grid.Row="0"
                 Placeholder="ingrese su e-mail"
                 PlaceholderColor="Black"
-                Keyboard="Email">
-                </Entry>
-                <Label
-                     Grid.Column="0"
-                    Grid.Row="1"
+                Keyboard="Email"
+                Text="{Binding Email, Mode=TwoWay}">
+                    </Entry>
+                    <Label
+                 Grid.Column="0"
+                 Grid.Row="1"
                 Text="Password"
-                FontAttributes="Bold">
-                </Label>
-                <Entry
-                     Grid.Column="1"
-                    Grid.Row="1"
+                FontAttributes="Bold"
+                VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                Grid.Column="1"
+                Grid.Row="1"
                 Placeholder="ingrese su password"
                 PlaceholderColor="Black"
-                IsPassword="True">
-                </Entry>
-
-            </Grid>
-        
-            <ActivityIndicator>
-                
-            </ActivityIndicator>
-            <Button
+                IsPassword="True"
+                Text="{Binding Password, Mode=TwoWay}">
+                    </Entry>
+                </Grid>
+                <StackLayout
+                Orientation="Horizontal"
+                Margin="0,0">
+                    <Label
+                Text="Recordar en este dispositivo"
+                    VerticalOptions="Center"
+                    HorizontalOptions="StartAndExpand">
+                    </Label>
+                    <Switch
+                    HorizontalOptions="End"
+                    IsToggled="{Binding IsRemenber, Mode=TwoWay}">
+                   </Switch>
+                </StackLayout>
+                <StackLayout>
+                    <Label
+                        Text="olvido su password..?"
+                        HorizontalOptions="Center"
+                        TextColor="Blue">
+                    </Label>
+                </StackLayout>
+                <ActivityIndicator
+                    VerticalOptions="CenterAndExpand"
+                    IsRunning="{Binding IsRunning, Mode=TwoWay}">
+                </ActivityIndicator>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button
+                Grid.Column="0"
+                Grid.Row="0"            
                 Text="Iniciar Sesion"
-                BackgroundColor="DimGray"
+                Command="{Binding LoginCommand}"        
+                BackgroundColor="MediumSeaGreen"
                 BorderRadius="20"
+                HeightRequest="40"
                 TextColor="White">
-            </Button>
+                    </Button>
+                    <Button
+                Grid.Column="1"
+                Grid.Row="0"        
+                Text="Registrarse"
+                BackgroundColor="CadetBlue"
+                BorderRadius="20"
+                HeightRequest="40"
+                TextColor="White">
+                    </Button>
+                </Grid>
+            
+                <StackLayout
+                Orientation="Horizontal"
+                HorizontalOptions="End">
+                    <Image
+                    Source="face"
+                    WidthRequest="50">
 
-        </StackLayout>
+                    </Image>
+                    <Image
+                    Source="twiter"
+                    WidthRequest="50">
+
+                    </Image>
+
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+       
     </ContentPage.Content>
 </ContentPage>
